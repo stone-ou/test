@@ -1,48 +1,4 @@
-# v2ray-heroku
 
-> ~~貌似新建的app有些需要科学访问~~，如果需要，请使用cloudflare worker CDN 或者 cloudflare tunnel 套一层。
-
-> 切换到最新的 VLESS 协议。具体客户端配置请看 config 章节。
-
-> v2ray-heroku 是我为了体验 github action 的产物，也是我的主力 backup，我会日常维护它。加入或者修改一些我认为好的配置。但这一般会导致客户端配置需要些许修改。 不过具体配置都会体现在 [详细 VLESS websocket 客户端配置](#vless-websocket-客户端配置)
-
-> 有问题请开 issue 或者 discussions。
-
-> 很多人反馈 heroku 封号，我自己的还好用，请大家反馈，如果大部分人都被封号，那么就没有办法了，其他的免费的我试了 Okteto Cloud， 秒封。
-
-## **请大家不要跑速度测试，或者长时间大流量。**
-
-
-## Change log
-
-应需求，加上首页伪装，每次部署都会随机生成首页，如果你有想法，请自己把想要的html放入到 项目html 文件，然后后续 action 部署会自动拿到。
-
-## !!!!!!! **对于一些老用户是 breaking change, 对 ws 的 path 做了修改, 请注意查看客户端配置**
-
-
-首先查看别人的 [youtube 教程](https://www.youtube.com/watch?v=xHZyDsFYdvA)，了解怎么配置 v2ray-heroku。**本项目使用最新 VLESS 协议，请在客户端配置选择 VLESS**。  
-[详细 VLESS websocket 客户端配置](#vless-websocket-客户端配置) 。
-
-如果你还想自动化你的 heroku，请查看下面的教程。
-
-本项目是包含，
-
-- 一键部署 V2ray 到 heroku。
-- 利用 Github action 实现 [重新部署](#重新部署)/[停止](#停止)/[启动](#启动)/[删除](#删除)。
-- 支持 heroku 的区域（us 和 eu）
-- **支持[多app和多账户](#使用-environments-实现-多账户多app-secrets-管理) [重新部署](#重新部署)/[停止](#停止)/[启动](#启动)/[删除](#删除)。**
-
-- 利用 cloudflare CDN 进行加速。
-- **利用 [cloudflare tunnel](https://www.cloudflare.com/products/tunnel/) 进行加速。**
-- **随机生成首页。每次部署都会产生随机首页。**
-    1. 如想自定义主页，请自行在仓库中生成 index.html 放入 `html` 中
-
-```text
-项目Dockerfile是基于V2fly 官方镜像制作。仅仅增加生产配置文件的脚本。重新部署就可以更新到最新的v2ray。
-基于官方镜像，这也是v2fly 推荐的做法。
-```
-
-> 保持安全最简单的方式就是，保持软件更新。
 
 ## 一键部署
 
